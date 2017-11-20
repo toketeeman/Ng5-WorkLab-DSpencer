@@ -14,7 +14,7 @@ export class RecipeService {
     new Recipe(
       'A Test Recipe', 
       'Really tasty shit!', 
-      'https://cdn.pixabay.com/photo/2017/09/06/20/03/shrimp-2722795_640.jpg',
+      'https://assets.vogue.com/photos/589188af7edfa70512d6514a/master/pass/10-macedonia-food-guide.jpg',
       [
         new Ingredient('Meat', 1),
         new Ingredient('French Fries', 20)
@@ -22,7 +22,7 @@ export class RecipeService {
     new Recipe(
       'Another Test Recipe', 
       'Easy to cook!', 
-      'https://cdn.pixabay.com/photo/2017/09/06/20/03/shrimp-2722795_640.jpg',
+      'https://www.thelocal.it/userdata/images/article/69523836b0191608c41d640feead8da2be5462038d3409e1e3900fad039c7fc8.jpg',
       [ 
         new Ingredient('Buns', 2),
         new Ingredient('Meat', 1)
