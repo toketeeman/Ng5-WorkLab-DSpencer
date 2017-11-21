@@ -1,10 +1,12 @@
 # Ng5WorkLab
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
+This is a research lab! Thus it is continually "in-progress" and likely to be functionally incomplete.
 
-This project has been deployed to run in AWS S3 at: 
+The last functionally-complete version of this project has been deployed to run in AWS S3 at: 
 
-http://ng-recipe-book-deployment-toketeeman.s3-website-us-west-2.amazonaws.com 
+  http://ng-recipe-book-deployment-toketeeman.s3-website-us-west-2.amazonaws.com 
+
+This research project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
 ## Development server
 
