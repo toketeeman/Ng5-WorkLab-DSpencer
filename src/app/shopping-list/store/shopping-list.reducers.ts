@@ -13,8 +13,9 @@ export function shoppingListReducer(state = initialState, action: ShoppingListAc
   switch (action.type) {
     case ShoppingListActions.ADD_INGREDIENT: 
       return {
-        ...state,
-        ingredients: [...state.ingredients, action.payload]
+        ...state,                                             // Reproduce the current state before action.
+        ingredients: [...state.ingredients, action.payload]   // Action done here: override the state's 
+                                                              // ingredients property.
       }
     default:
       return state;

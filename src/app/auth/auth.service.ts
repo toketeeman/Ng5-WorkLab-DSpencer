@@ -37,12 +37,14 @@ export class AuthService {
   }
 
   getToken() {
-    firebase.auth().currentUser.getIdToken()   // Returns a promise. Async because verification of "token is active" 
-      .then(                                 // requires a firebase access.
+    firebase.auth().currentUser.getIdToken()   // Returns a promise. Async because verification 
+      .then(                                   // of "token is active" requires a firebase access.
         (token: string) => this.token = token
       );
-    return this.token;                      // MOST of the time, this token will be current/active! Otherwise, set up a retry.                                                 // Done this way as a convenience for accessing this function since it is called
-                                            // only for actual database operations AFTER a login that iniitally sets the token.
+    return this.token;                      // MOST of the time, this token will be current/active!                                                             // Otherwise, set up a retry. Done this way as a
+                                            // convenience for accessing this function since it is called
+                                            // only for actual database operations AFTER a login that 
+                                            // iniitally sets the token.
   }
 
   isAuthenticated() {
