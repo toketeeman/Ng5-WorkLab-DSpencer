@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
+This project has been deployed to run in AWS S3 at: 
+
+http://ng-recipe-book-deployment-toketeeman.s3-website-us-west-2.amazonaws.com 
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -12,7 +16,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use `ng build --prod --aot` for a production deployment. (AWS S3 is currently being used for deployment.)
 
 ## Running unit tests
 

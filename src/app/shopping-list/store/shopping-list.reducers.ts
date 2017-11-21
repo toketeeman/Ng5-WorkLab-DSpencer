@@ -13,7 +13,7 @@ export function shoppingListReducer(state = initialState, action: ShoppingListAc
   switch (action.type) {
     case ShoppingListActions.ADD_INGREDIENT: 
       return {
-        ...state,                                             // Reproduce the current state before action.
+        ...state,                                             // Regenerate the current state before action.
         ingredients: [...state.ingredients, action.payload]   // Action done here: override the state's 
                                                               // ingredients property.
       }
