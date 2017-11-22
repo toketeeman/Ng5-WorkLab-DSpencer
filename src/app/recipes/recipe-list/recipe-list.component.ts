@@ -12,7 +12,8 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit, OnDestroy {
-  recipes: Recipe[];    // The local component's COPY of the actual recipes. Acttual copy resides in the recipe service.
+  recipes: Recipe[];    // The local component's COPY of the actual recipes. 
+                        // Actual copy resides in the recipe service.
   subscription: Subscription;
 
   constructor(private recipeService: RecipeService,

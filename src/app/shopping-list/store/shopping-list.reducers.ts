@@ -15,7 +15,7 @@ export function shoppingListReducer(state = initialState, action: ShoppingListAc
       return {
         ...state,                                             // Regenerate the current state before action.
         ingredients: [...state.ingredients, action.payload]   // Action done here: override the state's 
-                                                              // ingredients property.
+                                                              //  ingredients property.
       }
     default:
       return state;

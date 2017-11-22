@@ -9,18 +9,18 @@ export class ShoppingListService {
     new Ingredient('Tomatoes', 10)
   ];
 
-  getIngredients() {
-    return this.ingredients.slice();  // Note: this is a shallow copy! New array points to original array elements.
-  }
+  // getIngredients() {
+  //   return this.ingredients.slice();  // Note: this is a shallow copy! New array points to original array elements.
+  // }
 
   getIngredient(index: number) {
     return this.ingredients[index];
   }
 
-  addIngredient(ingredient: Ingredient) {
-    this.ingredients.push(ingredient);
-    this.ingredientsChanged.next(this.ingredients.slice());  // Always emitting a shallow copy of the ingredients array.
-  }
+  // addIngredient(ingredient: Ingredient) {
+  //   this.ingredients.push(ingredient);
+  //   this.ingredientsChanged.next(this.ingredients.slice());  // Always emitting a shallow copy of the ingredients array.
+  // }
 
   addIngredients(ingredients: Ingredient[]) {
     this.ingredients.push(...ingredients);
