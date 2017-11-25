@@ -1,4 +1,4 @@
-# Ng5WorkLab
+# Ng5 Worklab - Dwight Spencer
 
 This is a research lab! Thus it is continually "in-progress" and likely to be functionally incomplete.
 

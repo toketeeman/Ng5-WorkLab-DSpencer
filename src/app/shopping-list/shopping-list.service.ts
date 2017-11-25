@@ -1,3 +1,5 @@
+// Note: This entire service file is NOT used when using NgRx.
+
 import { Ingredient } from '../shared/ingredient.model';
 import { Subject } from 'rxjs/Subject';
 
