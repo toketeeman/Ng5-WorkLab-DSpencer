@@ -91,6 +91,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.store.dispatch(new ShoppingListActions.StopEdit());   // Reset state when leaving edit component!
     this.subscription.unsubscribe();  // Remove this custom subscription to avoid memory leak.
   }
 }

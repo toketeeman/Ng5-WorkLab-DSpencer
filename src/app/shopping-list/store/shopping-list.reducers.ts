@@ -41,14 +41,18 @@ export function shoppingListReducer(state = initialState, action: ShoppingListAc
       ingredientsForUpdate[state.editedIngredientIndex] = updatedIngredient;
       return {
         ...state,
-        ingredients: ingredientsForUpdate
+        ingredients: ingredientsForUpdate,
+        editedIngredient: null,
+        editedIngredientIndex: -1
       };
     case ShoppingListActions.DELETE_INGREDIENT:
       const ingredientsForDelete = [...state.ingredients];  // Copy original ingredient array. (Immutability)
       ingredientsForDelete.splice(state.editedIngredientIndex, 1);
       return {
         ...state,
-        ingredients: ingredientsForDelete
+        ingredients: ingredientsForDelete,
+        editedIngredient: null,
+        editedIngredientIndex: -1
       };
     case ShoppingListActions.START_EDIT:
       const editedIngredient = {...state.ingredients[action.payload]};  // Copy orig ingredient. (Immutability)
@@ -57,6 +61,12 @@ export function shoppingListReducer(state = initialState, action: ShoppingListAc
         editedIngredient: editedIngredient,
         editedIngredientIndex: action.payload
       };
+    case ShoppingListActions.STOP_EDIT:    // Important to reset state when leaving a form component!
+      return {
+        ...state,
+        editedIngredient: null,
+        editedIngredientIndex: -1
+    };
     default:
       return state;
   }
