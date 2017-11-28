@@ -30,8 +30,9 @@ export class HeaderComponent {
   }
 
   isAuthenticated() {
-    return this.authService.isAuthenticated();   // Wrap authService call for use in template.
-                                                 // Allows AOT compile!.
+    return this.authService.isAuthenticated();   // Wrap authService call HERE for use in template.
+                                                 // Don't use the service explicitly in the template! 
+                                                 // Wrapping will allow AOT compile!.
   }
 }
 

@@ -2,10 +2,6 @@ import * as ShoppingListActions from './shopping-list.actions';
 
 import { Ingredient } from "../../shared/ingredient.model";
 
-export interface AppState {
-  shoppingList: State
-}
-
 export interface State {
   ingredients: Ingredient[],
   editedIngredient: Ingredient;
@@ -21,7 +17,9 @@ const initialState: State = {
   editedIngredientIndex: -1
 };
 
-// All actions update the state immutably!
+// All actions update the state immutably and synchronously!
+// Ergo, reduces cannot do asynchronous actions.
+
 export function shoppingListReducer(state = initialState, action: ShoppingListActions.ShoppingListActions) {
   switch (action.type) {
     case ShoppingListActions.ADD_INGREDIENT: 
@@ -61,7 +59,7 @@ export function shoppingListReducer(state = initialState, action: ShoppingListAc
         editedIngredient: editedIngredient,
         editedIngredientIndex: action.payload
       };
-    case ShoppingListActions.STOP_EDIT:    // Important to reset state when leaving a form component!
+    case ShoppingListActions.STOP_EDIT:    // Important to explicitly reset state when leaving a form component!
       return {
         ...state,
         editedIngredient: null,
