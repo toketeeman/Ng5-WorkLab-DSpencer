@@ -10,6 +10,9 @@ const initialState: State = {
   authenticated: false
 };
 
+// All dispatched actions update the state immutably and synchronously!
+// Ergo, reducers cannot do asynchronous actions.
+
 export function authReducer(state = initialState, action: AuthActions.AuthActions) {
   switch (action.type) {
     case AuthActions.SIGNUP:
@@ -24,6 +27,11 @@ export function authReducer(state = initialState, action: AuthActions.AuthAction
         token: null,
         authenticated: false
       };
+    case AuthActions.SET_TOKEN:
+      return {
+        ...state,
+        token: action.payload
+      }; 
     default:
       return state;
   }

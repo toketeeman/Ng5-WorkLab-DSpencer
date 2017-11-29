@@ -12,10 +12,10 @@ import { Ingredient } from '../shared/ingredient.model';
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();  // Observable used to propagate the actual state.
 
-  private recipes: Recipe[]= [   // The actual recipe state.
+  private recipes: Recipe[]= [   // The initial local recipe state.
     new Recipe(
       'A Test Recipe', 
-      'Really tasty shit!', 
+      'Really tasty bits!', 
       'https://assets.vogue.com/photos/589188af7edfa70512d6514a/master/pass/10-macedonia-food-guide.jpg',
       [
         new Ingredient('Meat', 1),
@@ -68,5 +68,4 @@ export class RecipeService {
     this.recipes.splice(index, 1);    // Actual change made here.
     this.recipesChanged.next(this.recipes.slice());
   }
-
 }

@@ -4,17 +4,13 @@ import { Observable } from 'rxjs/Observable';       // Needed to use any Observa
 import 'rxjs/add/operator/map';                     // Do precise import of rxjs operation to satisy AoT.                
 import { RecipeService } from '../recipes/recipe.service';
 import { Recipe } from '../recipes/recipe.model';
-import { AuthService } from '../auth/auth.service';
 
 @Injectable()
 export class DataStorageService {
   constructor(private httpClient: HttpClient, 
-              private recipeService: RecipeService,
-              private authService: AuthService) {}
+              private recipeService: RecipeService) {}
 
   storeRecipes() {
-    const token = this.authService.getToken();  // Note: not used with active code shown.
-
     //const headers = new HttpHeaders().set('Authorization', 'Bearer fasrlakfhfdaaflkj');   // Typical JWT header.
 
     // Return observable to be (optionally) subscribed to by caller.
@@ -46,8 +42,6 @@ export class DataStorageService {
   }
 
   getRecipes() {
-    const token = this.authService.getToken();  // Note: not used with active code shown.
-
     // The http get is now generic!
     //this.httpClient.get<Recipe[]>('https://ng-recipe-book-30ed7.firebaseio.com/recipes.json?auth=' + token)
 
@@ -65,7 +59,7 @@ export class DataStorageService {
       .map(
         (recipes) => {                         // New HttpClient automatically returns the response body!
           console.log(recipes);
-          for (let recipe of recipes) {        // Insure rtnd body has array (ingredients) property.
+          for (let recipe of recipes) {        // Insure returned body has array (ingredients) property.
             if (!recipe['ingredients']) {      // Database itself might exclude this property if array is empty!
               recipe['ingredients'] = [];
             }

@@ -17,8 +17,8 @@ const initialState: State = {
   editedIngredientIndex: -1
 };
 
-// All actions update the state immutably and synchronously!
-// Ergo, reduces cannot do asynchronous actions.
+// All dispatched actions update the state immutably and synchronously!
+// Ergo, reducers cannot do asynchronous actions.
 
 export function shoppingListReducer(state = initialState, action: ShoppingListActions.ShoppingListActions) {
   switch (action.type) {
