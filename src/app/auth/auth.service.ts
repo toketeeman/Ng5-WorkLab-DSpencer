@@ -14,6 +14,7 @@ export class AuthService {
 
   constructor(private router: Router, private store: Store<fromApp.AppState>) {} 
 
+  // Note: This method has been re-implemented as an effects (NgRx/effects) action.
   signupUser(email: string, password: string) {
     firebase.auth().createUserWithEmailAndPassword(email, password)   // Note: Promise is returned here!
       .then(

@@ -6,13 +6,14 @@ import { Store } from '@ngrx/store';
 import * as fromApp from '../../store/app.reducers';
 import * as AuthActions from '../store/auth.actions';
 
-
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+
+  //constructor(private authService: AuthService) {}
 
   constructor(private store: Store<fromApp.AppState>) { }
 
@@ -26,8 +27,7 @@ export class SignupComponent implements OnInit {
     // Replaced by NgRx/effects implementation.
     // this.authService.signupUser(email, password);   // Note: Firebase password must be at least 6 characters,
     //                                                 //  but not explicitly validated here.
-    
+
     this.store.dispatch(new AuthActions.TrySignup({username: email, password: password}));
   }
-
 }

@@ -1,14 +1,21 @@
 import { Action } from '@ngrx/store';
 
 // Action type identifiers.
-export const TRY_SIGNUP = 'TRY_SIGNUP';    // Does not have a reducer, used instead as an (side-) effect.  
+export const TRY_SIGNUP = 'TRY_SIGNUP';  
 export const SIGNUP = 'SIGNUP';
+export const TRY_SIGNIN = 'TRY_SIGNIN';
 export const SIGNIN = 'SIGNIN';
 export const LOGOUT = 'LOGOUT';
 export const SET_TOKEN = 'SET_TOKEN';
 
 export class TrySignup implements Action {      // An effects action.
   readonly type = TRY_SIGNUP;
+
+  constructor(public payload: {username: string, password: string}) {}
+}
+
+export class TrySignin implements Action {      // An effects action.
+  readonly type = TRY_SIGNIN;
 
   constructor(public payload: {username: string, password: string}) {}
 }
@@ -36,5 +43,6 @@ export type AuthActions =
               Signin | 
               Logout | 
               SetToken | 
-              TrySignup;
+              TrySignup |
+              TrySignin;
               
