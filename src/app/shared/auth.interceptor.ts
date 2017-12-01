@@ -23,14 +23,14 @@ export class AuthInterceptor implements HttpInterceptor {
     // const copiedReq = req.clone({headers: req.headers.append('', '')});   // A headers modification example.
 
     return this.store.select('auth')
-      .take(1)  // The select sets up on-going subscription that fires the switchMap on any store change, creating
-                //  a spurious http request! So take this observable value only once (i.e. auto-unsubscribe)!
+      .take(1)  // The select sets up on-going subscription that fires the switchMap on ANY store change, creating
+                //  spurious http requests! So accept this observable value only once (i.e. auto-unsubscribe)!
       .switchMap((authState: fromAuth.State) => {
         const copiedReq = req.clone({params: req.params.set('auth', authState.token)});
         return next.handle(copiedReq);  // Allows http request to go through with alterations, if any.
                                         // Note that next.handle() itself produces an observable. So use
                                         //  switchMap to prevent wrapping the returned obervable value in 
-                                        //  yet another Observable.
+                                        //  yet another Observable. I.E., we are "switching observables" here.
       })
 
     //return next.handle(null);   // Kills the http request.

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';    // New HttpClient module in Angular 5.
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +11,8 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { reducers } from './store/app.reducers';
+import { AuthEffects } from './auth/store/auth.effects';
+
 
 
 @NgModule({
@@ -24,7 +27,8 @@ import { reducers } from './store/app.reducers';
     ShoppingListModule,
     AuthModule,
     CoreModule,
-    StoreModule.forRoot(reducers)   // Register state slices and reducers here.
+    StoreModule.forRoot(reducers),   // Register state slices and reducer actions here.
+    EffectsModule.forRoot([AuthEffects])   // Register effects actions here.
   ],
   providers: [],
   bootstrap: [AppComponent]

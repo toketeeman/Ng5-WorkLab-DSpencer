@@ -15,7 +15,7 @@ export class AuthService {
   constructor(private router: Router, private store: Store<fromApp.AppState>) {} 
 
   signupUser(email: string, password: string) {
-    firebase.auth().createUserWithEmailAndPassword(email, password)   // Promise returned here.
+    firebase.auth().createUserWithEmailAndPassword(email, password)   // Note: Promise is returned here!
       .then(
         user => {
           this.store.dispatch(new AuthActions.Signup());  // Synchronous state action done asynchronously.
