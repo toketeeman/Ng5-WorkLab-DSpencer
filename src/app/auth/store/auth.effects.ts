@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';               // Do precise import of rxjs operation to satisy AoT.
 import 'rxjs/add/operator/switchMap';         // Do precise import of rxjs operation to satisy AoT.
 import 'rxjs/add/operator/mergeMap';          // Do precise import of rxjs operation to satisy AoT.
+import 'rxjs/add/operator/do';                // Do precise import of rxjs operation to satisy AoT.
 import { fromPromise } from 'rxjs/observable/fromPromise';  // Converts a promise into an observable.
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
@@ -12,8 +13,14 @@ import * as AuthActions from './auth.actions';
 
 // Dispatched action effects do not ever change the app state!
 
+// Do not end an effect chain with a subscribe! An observable must be returned by the chain
+//  for final processing by NgRx/effects. Use the do() operator for processing without subscribing.
+
 @Injectable()
 export class AuthEffects {
+
+  // Effects to be done for a try-to-sign-up (registration).
+
   @Effect()               // Note: This decorator expects zero or more reducer action observables
                           //  to be produced (in the last step) by the entire chain below. These 
                           //  observables will then be automatically dispatched as reducer actions.
@@ -45,7 +52,11 @@ export class AuthEffects {
       ];
     });
 
-    // Note: in last step above, you could use just 'map' to return a single action reducer observable.
+    // Note: in last step above, you could use just 'map' if you wish to return 
+    //  only a single action reducer observable.
+
+
+    // Effects to be done for a try-to-sign-in (login) action.
 
     @Effect()
     authSignin = this.actions$
@@ -64,13 +75,24 @@ export class AuthEffects {
         this.router.navigate(['/']);    // Go back to home page upon login.
         return [                        // Return reducer action observables to be dispatched by NgRx/effects.
           {  
-            type: AuthActions.SIGNIN
+            type: AuthActions.SIGNIN      // An associated reducer action to be done after the effect action.
           },
           {
-            type: AuthActions.SET_TOKEN,
+            type: AuthActions.SET_TOKEN,  // An associated reducer action to be done after the effect action.
             payload: token
           }
         ];
+      });
+
+
+    // Effects to be done for a logout action. Note: this effect action is automatically executed along with
+    // a corresponding separate reducer action of the SAME type. Go see the reducer action.
+
+    @Effect({dispatch: false})
+    authLogout = this.actions$
+      .ofType(AuthActions.LOGOUT)
+      .do(() => {
+        this.router.navigate(['/']);
       });
 
   constructor(private actions$: Actions,     // actions$ is an Observable (indicated here by using '$' suffix)

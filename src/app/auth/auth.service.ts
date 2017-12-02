@@ -1,4 +1,5 @@
 // Note: This entire service file is NOT used when using NgRx.
+// All of this original functionality below was transformed into auth effects actions.
 
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
