@@ -28,7 +28,7 @@ import { environment } from '../environments/environment';
     ShoppingListModule,
     AuthModule,
     CoreModule,
-    StoreModule.forRoot(reducers),   // Register state slices and reducer actions here.
+    StoreModule.forRoot(reducers),          // Register state slices and reducer actions here.
     EffectsModule.forRoot([AuthEffects]),   // Register effects actions here.
     StoreRouterConnectingModule,
     !environment.production ? StoreDevtoolsModule.instrument() : []   

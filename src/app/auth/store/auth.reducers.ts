@@ -12,7 +12,6 @@ const initialState: State = {
 
 // All dispatched action reducers update the state immutably and synchronously!
 // Ergo, reducers cannot do asynchronous actions.
-// BUT dispatched action effects do NOT change the state!
 
 export function authReducer(state = initialState, action: AuthActions.AuthActions) {
   switch (action.type) {

@@ -13,6 +13,10 @@ import * as AuthActions from './auth.actions';
 
 // Dispatched action effects do not ever change the app state!
 
+// When an action type has both reducer actions and effect actions SEPERATELY implemented for it, all its reducers
+//  are run BEFORE all its effect actions by ngrx/effects. To have the reducers run after the effects, the 
+//  reducer actions must be generated from the effect actions (as shown in the first two effects below).
+
 // Do not end an effect chain with a subscribe! An observable must be returned by the chain
 //  for final processing by NgRx/effects. Use the do() operator for processing without subscribing.
 
@@ -72,7 +76,7 @@ export class AuthEffects {
         return fromPromise(firebase.auth().currentUser.getIdToken());
       })
       .mergeMap((token: string) => {    // Generate multiple observables and merge them into single observable.
-        this.router.navigate(['/']);    // Go back to home page upon login.
+        this.router.navigate(['/']);    // But first go back to home page upon login.
         return [                        // Return reducer action observables to be dispatched by NgRx/effects.
           {  
             type: AuthActions.SIGNIN      // An associated reducer action to be done after the effect action.
@@ -85,8 +89,8 @@ export class AuthEffects {
       });
 
 
-    // Effects to be done for a logout action. Note: this effect action is automatically executed along with
-    // a corresponding separate reducer action of the SAME type. Go see the reducer action.
+    // Effects to be done for a logout action. Note: this effect action is automatically executed by ngrx/effects
+    //  along with a corresponding separate reducer action of the SAME type. Go see that reducer action.
 
     @Effect({dispatch: false})
     authLogout = this.actions$
