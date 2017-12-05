@@ -1,8 +1,10 @@
 import { Recipe } from "../recipe.model";
 import { Ingredient } from "../../shared/ingredient.model";
 import * as RecipeActions from "./recipe.actions";
+import * as fromApp from '../../store/app.reducers';
 
-export interface FeatureState {      // Our features's state slices. Keywords are used as select arguments.
+export interface FeatureState extends fromApp.AppState {  // Our features's state slices appended to 
+                                                          //  the app's state slices (here, only one is appended).
   recipes: State
 }
 
