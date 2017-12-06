@@ -44,28 +44,31 @@ export class RecipeService {
     return this.recipes.slice();  //  Beware! A shallow copy, not the actual state.  
   }
 
-  getRecipe(index: number) {
-    return this.recipes[index];
-  }
-
   // // Not actually called anymore. So it is removed along with constructor above.
   // addIngredientsToShoppingList(ingredients: Ingredient[]) {
   //     //this.slService.addIngredients(ingredients);    // Using old service way.
   //     this.store.dispatch(new ShoppingListActions.AddIngredients(ingredients));
   // }
 
-  addRecipe(recipe: Recipe) {
-    this.recipes.push(recipe);   // Actual change made here.
-    this.recipesChanged.next(this.recipes.slice());
-  }
 
-  updateRecipe(index: number, newRecipe: Recipe) {
-    this.recipes[index] = newRecipe;    // Actual change made here.
-    this.recipesChanged.next(this.recipes.slice());
-  }
+  // Made unnecessary by using the NgRx store.
+  //
+  // getRecipe(index: number) {
+  //   return this.recipes[index];
+  // }
 
-  deleteRecipe(index: number) {
-    this.recipes.splice(index, 1);    // Actual change made here.
-    this.recipesChanged.next(this.recipes.slice());
-  }
+  // addRecipe(recipe: Recipe) {
+  //   this.recipes.push(recipe);   // Actual change made here.
+  //   this.recipesChanged.next(this.recipes.slice());
+  // }
+
+  // updateRecipe(index: number, newRecipe: Recipe) {
+  //   this.recipes[index] = newRecipe;    // Actual change made here.
+  //   this.recipesChanged.next(this.recipes.slice());
+  // }
+
+  // deleteRecipe(index: number) {
+  //   this.recipes.splice(index, 1);    // Actual change made here.
+  //   this.recipesChanged.next(this.recipes.slice());
+  // }
 }

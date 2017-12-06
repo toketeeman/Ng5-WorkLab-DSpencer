@@ -29,7 +29,7 @@ import { environment } from '../environments/environment';
     AuthModule,
     CoreModule,
     StoreModule.forRoot(reducers),          // Register state slices and reducer actions here.
-    EffectsModule.forRoot([AuthEffects]),   // Register effects actions here.
+    EffectsModule.forRoot([AuthEffects]),   // Register effects actions module here.
     StoreRouterConnectingModule,
     !environment.production ? StoreDevtoolsModule.instrument() : []   
                                                           // Requires Chrome extension Redux DevTools 

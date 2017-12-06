@@ -67,7 +67,7 @@ export class DataStorageService {
           return recipes;
         }
       )
-      // "Return" the results via using a data service. Don't return an observable.
+      // "Return" the results via using a data service. So this doesn't return an observable.
       .subscribe(
         (recipes: Recipe[]) => {
           this.recipeService.setRecipes(recipes);
