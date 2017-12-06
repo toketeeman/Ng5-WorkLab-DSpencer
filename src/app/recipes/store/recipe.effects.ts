@@ -6,12 +6,12 @@ import * as RecipeActions from '../store/recipe.actions';
 
 @Injectable()
 export class RecipeEffects {
-  @Effect()
-  recipeFetch = this.actions$
-    .ofType(RecipeActions.FETCH_RECIPES)
-    .switchMap((action: RecipeActions.FetchRecipes) => {
-      
-    });
+  // @Effect()
+  // recipeFetch = this.actions$
+  //   .ofType(RecipeActions.FETCH_RECIPES)
+  //   .switchMap((action: RecipeActions.FetchRecipes) => {
 
-  constructor(private actions$: Actions) {}
+  //   });
+
+  // constructor(private actions$: Actions) {}
 }
