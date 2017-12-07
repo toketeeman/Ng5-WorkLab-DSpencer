@@ -1,3 +1,5 @@
+// This service is out-of-use due to NgRx store.
+
 //import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 //import { Store } from '@ngrx/store';
@@ -35,11 +37,14 @@ export class RecipeService {
   //   //        private slService: ShoppingListService,
   //             private store: Store<{shoppingList: {ingredients: Ingredient[]}}>) {}
 
+
+  // Not called any more due to NgRx store.
   setRecipes(recipes: Recipe[]) {
     this.recipes = recipes;
     this.recipesChanged.next(this.recipes.slice());
   }
 
+  // Not called any more due to NgRx store.
   getRecipes() {
     return this.recipes.slice();  //  Beware! A shallow copy, not the actual state.  
   }

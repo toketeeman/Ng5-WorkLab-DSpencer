@@ -1,3 +1,5 @@
+// This service is out-of-use due to implementing NgRx store.
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';  // New HttpClient for Angular 5.
 import { Observable } from 'rxjs/Observable';       // Needed to use any Observable operators.
