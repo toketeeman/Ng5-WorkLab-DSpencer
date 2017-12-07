@@ -1,10 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Effect, Actions } from "@ngrx/effects";
-import 'rxjs/add/operator/switchMap';     // Do precise import of rxjs operation to satisy AoT.
-import { HttpClient } from "@angular/common/http";
+import 'rxjs/add/operator/switchMap';           // Do precise import of rxjs operation to satisy AoT.
+import 'rxjs/add/operator/withLatestFrom';      // Do precise import of rxjs operation to satisy AoT.
+import { HttpClient, HttpRequest } from "@angular/common/http";
+import { Store } from "@ngrx/store";
 
 import * as RecipeActions from '../store/recipe.actions';
 import { Recipe } from "../recipe.model";
+import * as fromRecipe from '../store/recipe.reducers';
 
 @Injectable()
 export class RecipeEffects {
@@ -44,6 +47,24 @@ export class RecipeEffects {
     //   }
     // );
 
+
+  @Effect({dispatch: false})
+  recipeStore = this.actions$
+    .ofType(RecipeActions.STORE_RECIPES)
+    .withLatestFrom(this.store.select('recipes'))   // Combine the action observable with the select observable.
+                                                    // This combo creates an array of observables to be passed on.
+    .switchMap(([action, state]) => {
+      const req = new HttpRequest(
+        'PUT', 
+        'https://ng-recipe-book-30ed7.firebaseio.com/recipes.json', 
+        //this.recipeService.getRecipes(),          // Old service way.
+        state.recipes,
+        {reportProgress: true});                 
+
+        return this.httpClient.request(req);
+      })  ;
+
   constructor(private actions$: Actions,
-              private httpClient: HttpClient) {}
+              private httpClient: HttpClient,
+              private store: Store<fromRecipe.FeatureState>) {}
 }

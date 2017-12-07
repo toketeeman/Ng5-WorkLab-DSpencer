@@ -26,15 +26,20 @@ export class HeaderComponent implements OnInit {
     this.authState = this.store.select('auth');
   }
 
+  // Save recipes in current store into backend daatbase.
   onSaveData() {
-    this.dataStorageService.storeRecipes()
-      .subscribe(                             // Fire the service's http request here.
-        (response) => {                       // Use (response: HttpEvent) to capture http events.
-          console.log(response);
-        }
-      );
+
+    // this.dataStorageService.storeRecipes()     // Old service way.
+    //   .subscribe(                              // Fire the service's http request here.
+    //     (response) => {                        // Use (response: HttpEvent) to capture http events.
+    //       console.log(response);
+    //     }
+    //   );
+
+    this.store.dispatch(new RecipeActions.StoreRecipes());
   }
 
+  // Fetch recipes from backend database into current store.
   onFetchData() {
     //this.dataStorageService.getRecipes();   // Old service way.
 
@@ -42,7 +47,8 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogout() {
-    //this.authService.logout();
+    //this.authService.logout();          // Old service way.
+
     this.store.dispatch(new AuthActions.Logout())
   }
 
