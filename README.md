@@ -1,12 +1,12 @@
 # Ng5 Worklab - Dwight Spencer
 
-This is a research lab! Thus it is continually "in-progress" and likely to be functionally incomplete.
+This is an Angular 5.1 research lab! Thus it is continually "in-progress" and likely to be functionally incomplete.
 
 The last functionally-complete version of this project has been deployed to run in AWS S3 at: 
 
   http://ng-recipe-book-deployment-toketeeman.s3-website-us-west-2.amazonaws.com 
 
-This research project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
+This research project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.0.
 
 ## Development server
 
