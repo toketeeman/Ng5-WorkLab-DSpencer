@@ -21,7 +21,10 @@ import { environment } from '../environments/environment';
     AppComponent
   ],
   imports: [
-    BrowserModule,         // A superset of the Common module, used only in the root module.
+    BrowserModule.withServerTransition({appId: 'my-universal-app'}),    
+                                                              // BrowserModule is a superset of the Common module, 
+                                                              //  used only in the root module. Configured here
+                                                              //  for server-side rendering.
     HttpClientModule,
     AppRoutingModule,
     SharedModule,
