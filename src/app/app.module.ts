@@ -5,6 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -34,10 +35,11 @@ import { environment } from '../environments/environment';
     StoreModule.forRoot(reducers),          // Register state slices and reducer actions here.
     EffectsModule.forRoot([AuthEffects]),   // Register effects actions module here.
     StoreRouterConnectingModule,
-    !environment.production ? StoreDevtoolsModule.instrument() : []   
+    !environment.production ? StoreDevtoolsModule.instrument() : [],  
                                                           // Requires Chrome extension Redux DevTools 
                                                           //  in Chrome web store. Must come after StoreModule!
                                                           // Use only in development mode!
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

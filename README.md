@@ -2,7 +2,7 @@
 
 This is an Angular 5.1 research lab! Thus it is continually "in-progress" and likely to be functionally incomplete.
 
-The last functionally-complete version of this project has been deployed to run in AWS S3 at: 
+The last functionally-complete version of this server-side-render-capable SPA project has been deployed to run in AWS S3 at: 
 
   http://ng-recipe-book-deployment-toketeeman.s3-website-us-west-2.amazonaws.com 
 
